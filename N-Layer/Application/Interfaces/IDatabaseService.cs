@@ -4,9 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Application
+
+namespace Application.Interfaces
 {
-    public class Class1
+    interface IDatabaseService
     {
+        //IDbSet<Movies> Movies { get; set; }
     }
 }
