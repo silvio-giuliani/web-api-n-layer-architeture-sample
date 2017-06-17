@@ -1,14 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Domain.Movies;
+using System.Data.Entity;
 
 
 namespace Application.Interfaces
 {
-    interface IDatabaseService
+    public interface IDatabaseService
     {
-        //IDbSet<Movies> Movies { get; set; }
+        IDbSet<Movie> Movies { get; set; }
+
+        void Save();
     }
 }
