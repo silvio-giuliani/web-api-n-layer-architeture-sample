@@ -1,5 +1,6 @@
 ﻿using Application.Interfaces;
 using Domain.Movies;
+using Persistence.Movies;
 using System;
 using System.Data.Entity;
 
@@ -9,9 +10,21 @@ namespace Persistence
     {
         public IDbSet<Movie> Movies { get;  set; }
 
+        public DatabaseService() : base("N-Layer") {
+
+            Database.SetInitializer(new DatabaseInitializer());
+        }
+
         public void Save()
         {
-            throw new NotImplementedException();
+            this.SaveChanges();
+        }
+
+        protected override void OnModelCreating(DbModelBuilder modelBuilder)
+        {
+            base.OnModelCreating(modelBuilder);
+
+            modelBuilder.Configurations.Add(new MovieConfiguration());
         }
     }
 }

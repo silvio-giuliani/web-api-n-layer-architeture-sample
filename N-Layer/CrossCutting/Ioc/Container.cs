@@ -1,5 +1,7 @@
 ﻿using Application.Interfaces;
+using Application.Movies.Queries;
 using Persistence;
+using SimpleInjector.Lifestyles;
 
 namespace CrossCutting.Ioc
 {
@@ -9,11 +11,15 @@ namespace CrossCutting.Ioc
         {
             var container = new SimpleInjector.Container();
 
-            container.Register<IDatabaseService, DatabaseService>();
+            container.Options.DefaultScopedLifestyle = new AsyncScopedLifestyle();
+
+            container.Register<IDatabaseService, DatabaseService>(SimpleInjector.Lifestyle.Scoped);
+            container.Register<IGetMoviesListQuery, GetMoviesListQuery>(SimpleInjector.Lifestyle.Scoped);
 
             container.Verify();
-
+                        
             return container;
         }
+
     }
 }
