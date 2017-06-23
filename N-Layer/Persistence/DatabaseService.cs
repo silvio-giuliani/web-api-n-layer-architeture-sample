@@ -1,7 +1,6 @@
 ﻿using Application.Interfaces;
 using Domain.Movies;
 using Persistence.Movies;
-using System;
 using System.Data.Entity;
 
 namespace Persistence
@@ -10,9 +9,10 @@ namespace Persistence
     {
         public IDbSet<Movie> Movies { get;  set; }
 
-        public DatabaseService() : base("N-Layer") {
+        public DatabaseService() : base("NLayer") {
 
             Database.SetInitializer(new DatabaseInitializer());
+            Database.Initialize(true);
         }
 
         public void Save()

@@ -5,7 +5,6 @@ namespace Persistence
 {
     public class DatabaseInitializer : CreateDatabaseIfNotExists<DatabaseService>
     {
-
         protected override void Seed(DatabaseService database)
         {
 
