@@ -1,8 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using Presentation.Helpers;
+using Presentation.Models;
 using System.Configuration;
-using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 
 namespace Presentation.Controllers
@@ -14,8 +12,10 @@ namespace Presentation.Controllers
         // GET: Movies
         public ActionResult Index()
         {
-            
-            return View();
+
+            var model = new ApiHelper().Get<MoviesModel>();
+
+            return View(model);
         }
     }
 }
