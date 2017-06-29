@@ -9,7 +9,7 @@ namespace Persistence.Migrations
     {
         public Configuration()
         {
-            AutomaticMigrationsEnabled = false;
+            AutomaticMigrationsEnabled = true;
         }
 
         protected override void Seed(Persistence.DatabaseService context)
