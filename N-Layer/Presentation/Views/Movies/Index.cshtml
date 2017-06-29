@@ -1,7 +1,35 @@
-﻿
+﻿@model List<Presentation.Models.MoviesModel>
+
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Movies";
 }
 
-<h2>Index</h2>
+<h2>Movies</h2>
+
+@using (Html.BeginForm())
+{
+    <div class="row" style="margin-top:20px;"></div>
+
+    foreach (var item in Model)
+    {
+        <div class="row">
+            <div class="col-sm-1">@Html.LabelFor(modelItem => item.Id)</div>
+            <div class="col-sm-11">@Html.DisplayFor(modelItem => item.Id)</div>
+        </div>
+        <div class="row">
+            <div class="col-sm-1">@Html.LabelFor(modelItem => item.Title)</div>
+            <div class="col-sm-11">@Html.DisplayFor(modelItem => item.Title)</div>
+        </div>
+        <div class="row">
+            <div class="col-sm-1">@Html.LabelFor(modelItem => item.Summary)</div>
+            <div class="col-sm-11">@Html.DisplayFor(modelItem => item.Summary)</div>
+        </div>
+        <div class="row">
+            <div class="col-sm-1">@Html.LabelFor(modelItem => item.YearReleased)</div>
+            <div class="col-sm-11">@Html.DisplayFor(modelItem => item.YearReleased)</div>
+        </div>
+        <div class="row" style="margin-top:20px;"></div>
+    }
+
+}
 
