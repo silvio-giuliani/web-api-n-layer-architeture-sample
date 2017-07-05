@@ -47,16 +47,21 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Interfaces\ICommand.cs" />
+    <Compile Include="Interfaces\ICommandHandler.cs" />
     <Compile Include="Interfaces\IDatabaseService.cs" />
+    <Compile Include="Movies\Commands\CreateMovieCommand.cs" />
+    <Compile Include="Movies\Commands\MovieModel.cs" />
     <Compile Include="Movies\Queries\GenreModel.cs" />
     <Compile Include="Movies\Queries\GetMoviesListQuery.cs" />
     <Compile Include="Movies\Queries\IGetMoviesListQuery.cs" />
     <Compile Include="Movies\Queries\MovieModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\AddMovieCommand.cs" />
+    <Compile Include="Services\Command.cs" />
+    <Compile Include="Services\CommandHandler.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Movies\Commands\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
