@@ -1,4 +1,5 @@
 ﻿using Application.Interfaces;
+using Application.Movies.Commands;
 using Application.Movies.Queries;
 using Persistence;
 using SimpleInjector.Lifestyles;
@@ -15,6 +16,7 @@ namespace CrossCutting.Ioc
 
             container.Register<IDatabaseService, DatabaseService>(SimpleInjector.Lifestyle.Scoped);
             container.Register<IGetMoviesListQuery, GetMoviesListQuery>(SimpleInjector.Lifestyle.Scoped);
+            container.Register<IAddMovieCommand, AddMovieCommand>(SimpleInjector.Lifestyle.Scoped);
 
             container.Verify();
                         

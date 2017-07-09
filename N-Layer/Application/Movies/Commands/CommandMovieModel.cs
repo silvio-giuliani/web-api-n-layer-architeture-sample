@@ -2,7 +2,7 @@
 
 namespace Application.Movies.Commands
 {
-    public class MovieModel
+    public class CommandMovieModel
     {
         public int Id { get; set; }
 
