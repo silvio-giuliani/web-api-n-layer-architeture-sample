@@ -6,16 +6,20 @@ namespace Api.v1.Movies
 {
     public class MoviesController : ApiController
     {
-        private readonly IGetMoviesListQuery _query;
+        private readonly IGetMoviesListQuery _getMoviesListQuery;
+        private readonly IGetMovieQuery _getMovieQuery;
         private readonly IAddMovieCommand _addCommand;
         private readonly IChangeMovieCommand _changeCommand;
         private readonly IRemoveMovieCommand _removeCommand;
 
-        public MoviesController(IGetMoviesListQuery query,
+        public MoviesController(IGetMoviesListQuery getMoviesListQuery,
+                                IGetMovieQuery getMovieQuery,
                                 IAddMovieCommand addCommand,
                                 IChangeMovieCommand changeCommand,
-                                IRemoveMovieCommand removeCommand) {
-            _query = query;
+                                IRemoveMovieCommand removeCommand)
+        {
+            _getMoviesListQuery = getMoviesListQuery;
+            _getMovieQuery = getMovieQuery;
             _addCommand = addCommand;
             _changeCommand = changeCommand;
             _removeCommand = removeCommand;
@@ -24,7 +28,16 @@ namespace Api.v1.Movies
         [HttpGet]
         public IHttpActionResult GetAll() {
 
-            var movies = _query.Execute();
+            var movies = _getMoviesListQuery.Execute();
+
+            return Ok(movies);
+        }
+
+        [HttpGet]
+        [Route("api/{version}/movies/get/{id}")]
+        public IHttpActionResult Get(int id)
+        {
+            var movies = _getMovieQuery.Execute(id);
 
             return Ok(movies);
         }
@@ -47,7 +60,8 @@ namespace Api.v1.Movies
         }
 
         [HttpPut]
-        public IHttpActionResult Update(int id, MoviesModel movie)
+        [Route("api/{version}/movies/update/{id}")]
+        public IHttpActionResult Update(int id, [FromBody]MoviesModel movie)
         {
 
             var addMovieModel = new CommandMovieModel()
@@ -64,6 +78,7 @@ namespace Api.v1.Movies
         }
 
         [HttpDelete]
+        [Route("api/{version}/movies/remove/{id}")]
         public IHttpActionResult Remove(int id)
         {
             _removeCommand.Execute(id);

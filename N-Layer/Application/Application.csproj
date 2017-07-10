@@ -55,7 +55,9 @@
     <Compile Include="Movies\Commands\IChangeMovieCommand.cs" />
     <Compile Include="Movies\Commands\IRemoveMovieCommand.cs" />
     <Compile Include="Movies\Queries\GenreModel.cs" />
+    <Compile Include="Movies\Queries\GetMovieQuery.cs" />
     <Compile Include="Movies\Queries\GetMoviesListQuery.cs" />
+    <Compile Include="Movies\Queries\IGetMovieQuery.cs" />
     <Compile Include="Movies\Queries\IGetMoviesListQuery.cs" />
     <Compile Include="Movies\Queries\MovieModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

@@ -16,7 +16,10 @@ namespace CrossCutting.Ioc
 
             container.Register<IDatabaseService, DatabaseService>(SimpleInjector.Lifestyle.Scoped);
             container.Register<IGetMoviesListQuery, GetMoviesListQuery>(SimpleInjector.Lifestyle.Scoped);
+            container.Register<IGetMovieQuery, GetMovieQuery>(SimpleInjector.Lifestyle.Scoped);
             container.Register<IAddMovieCommand, AddMovieCommand>(SimpleInjector.Lifestyle.Scoped);
+            container.Register<IChangeMovieCommand, ChangeMovieCommand>(SimpleInjector.Lifestyle.Scoped);
+            container.Register<IRemoveMovieCommand, RemoveMovieCommand>(SimpleInjector.Lifestyle.Scoped);
 
             container.Verify();
                         

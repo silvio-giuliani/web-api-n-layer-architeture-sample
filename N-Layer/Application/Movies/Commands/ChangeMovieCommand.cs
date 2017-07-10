@@ -20,7 +20,7 @@ namespace Application.Movies.Commands
             movie.Title = commandMovie.Title;
             movie.YearReleased = commandMovie.YearReleased;
 
-            _database.Movies.Add(movie);
+            //_database.Movies.Add(movie);
             _database.Save();
 
         }
