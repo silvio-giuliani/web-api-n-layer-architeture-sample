@@ -1,35 +1,51 @@
 ﻿@model List<Presentation.Models.MoviesModel>
 
 @{
-    ViewBag.Title = "Movies";
+    ViewBag.Title = "Movies List";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 <h2>Movies</h2>
 
 @using (Html.BeginForm())
 {
+    <div class="row" style="margin-top:20px;margin-right:10px;text-align:right;">@Html.ActionLink("Add", "Create", "Movies", null, new { @class = "btn btn-default" })</div>
+
     <div class="row" style="margin-top:20px;"></div>
 
-    foreach (var item in Model)
-    {
-        <div class="row">
-            <div class="col-sm-1">@Html.LabelFor(modelItem => item.Id)</div>
-            <div class="col-sm-11">@Html.DisplayFor(modelItem => item.Id)</div>
-        </div>
-        <div class="row">
-            <div class="col-sm-1">@Html.LabelFor(modelItem => item.Title)</div>
-            <div class="col-sm-11">@Html.DisplayFor(modelItem => item.Title)</div>
-        </div>
-        <div class="row">
-            <div class="col-sm-1">@Html.LabelFor(modelItem => item.Summary)</div>
-            <div class="col-sm-11">@Html.DisplayFor(modelItem => item.Summary)</div>
-        </div>
-        <div class="row">
-            <div class="col-sm-1">@Html.LabelFor(modelItem => item.YearReleased)</div>
-            <div class="col-sm-11">@Html.DisplayFor(modelItem => item.YearReleased)</div>
-        </div>
-        <div class="row" style="margin-top:20px;"></div>
-    }
+    <table class="table">
+        <tr>
+            <th>Id</th>
+            <th>Title</th>
+            <th>Summary</th>
+            <th>Year Released</th>
+            <th>Edit</th>
+            <th>Detail</th>
+        </tr>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Id)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Title)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Summary)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.YearReleased)
+                </td>
+                <td>Edit</td>
+                <td>@Html.ActionLink("Detail", "Detail", "Movies", new { id = item.Id }, null)</td>
+            </tr>
+        }
+    </table>
+
+    <div class="row" style="margin-top:20px;"></div>
+
+    <div class="row" style="margin-top:20px;margin-right:10px;text-align:right;">@Html.ActionLink("Add", "Create", "Movies", null, new { @class = "btn btn-default" })</div>
 
 }
 
