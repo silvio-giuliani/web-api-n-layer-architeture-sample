@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace Presentation.Models
 {
@@ -6,10 +7,13 @@ namespace Presentation.Models
     {
         public int Id { get; set; }
 
+        [Required]
         public string Title { get; set; }
 
+        [Required]
         public string Summary { get; set; }
 
+        [Required]
         public int YearReleased { get; set; }
 
         public List<GenresModel> Genres { get; set; }
